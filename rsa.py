@@ -1,6 +1,8 @@
 from encrypter import RSA_Encrypter
 from decrypter import RSA_Decrypter
 from primeFinder import PrimeFinder
+from public import PublicKey
+from private import PrivateKey
 import time
 from typing import Optional
 
@@ -40,7 +42,7 @@ def get_decryption_number(e: int, T: int) -> int:
 
 def main() -> None:
     start = time.time()
-    primeFinder = PrimeFinder(10000)
+    primeFinder = PrimeFinder(1000)
     p, q = tuple(primeFinder.getRandomPrimes(2))
     print(f"p: {p}", f"q: {q}")
     N = p * q
@@ -58,10 +60,9 @@ def main() -> None:
     time_taken = round(end - start, 2)
     print(f"Found all values in {time_taken}s")
     
-    encrypter = RSA_Encrypter(e, N)
-    encrypter.encrypt_file("macbeth.txt", "secret.txt")
+    public = PublicKey(e, N)
+    private = PrivateKey(d, N)
     
-    decrypter = RSA_Decrypter(d, N)
-    decrypter.decrypt_file("secret.txt", "decrypted.txt")
-
+    public.encrypt_file("macbeth.txt", "encrypted.txt")
+    private.decrypt_file("encrypted.txt", "decrypted.txt")
 main()

@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-FILE_NAME: str = "secret.txt"
+FILE_NAME: str = "encrypted.txt"
 SHOW_GRAPH: bool = True
-SHOW_CHARS: bool = True
+SHOW_CHARS: bool = False
 
 def main() -> None:
     distribution = []
