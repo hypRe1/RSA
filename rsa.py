@@ -1,5 +1,3 @@
-from encrypter import RSA_Encrypter
-from decrypter import RSA_Decrypter
 from primeFinder import PrimeFinder
 from public import PublicKey
 from private import PrivateKey
@@ -42,7 +40,7 @@ def get_decryption_number(e: int, T: int) -> int:
 
 def main() -> None:
     start = time.time()
-    primeFinder = PrimeFinder(1000)
+    primeFinder = PrimeFinder(2000)
     p, q = tuple(primeFinder.getRandomPrimes(2))
     print(f"p: {p}", f"q: {q}")
     N = p * q
@@ -65,4 +63,5 @@ def main() -> None:
     
     public.encrypt_file("macbeth.txt", "encrypted.txt")
     private.decrypt_file("encrypted.txt", "decrypted.txt")
+
 main()

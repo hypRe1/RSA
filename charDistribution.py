@@ -4,6 +4,7 @@ import numpy as np
 FILE_NAME: str = "encrypted.txt"
 SHOW_GRAPH: bool = True
 SHOW_CHARS: bool = False
+SEP = "\\"
 
 def main() -> None:
     distribution = []
@@ -12,7 +13,12 @@ def main() -> None:
     print(f"Reading file {FILE_NAME}...")
     
     with open(FILE_NAME) as f:
-        text = f.read().strip().split("\\")
+        raw_text = f.read().strip()
+    
+    if SEP:
+        text = raw_text.split(SEP)
+    else:
+        text = raw_text
     
     nChars = len(text)
     
@@ -26,7 +32,7 @@ def main() -> None:
     
     distribution = sorted(distribution, key = lambda prob: prob[1], reverse=True)
     
-    print(distribution)
+    print(distribution[:10])
     
     if SHOW_GRAPH:
         print("Visualising distribution")

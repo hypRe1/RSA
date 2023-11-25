@@ -1,14 +1,18 @@
 from typing import Optional
 
 
-FILE_NAME: str = "secret.txt"
+FILE_NAME: str = "encrypted.txt"
 OUTPUT_FILE: str = "revealed.txt"
 SEPARATOR: Optional[str] = "\\"  # Set to None for normal text
 
 
 def main() -> None:
     replace_dict = {
-        "code": "character"  # example
+        "70879": " ",  
+        "1518473": "e",
+        "1797": "t",
+        "1150197": "h",
+        "1713388": "r"
     }
     
     print(f"Reading file {FILE_NAME}")
@@ -17,7 +21,7 @@ def main() -> None:
         text = f.read().strip()
     
     if SEPARATOR:
-        text.split(SEPARATOR)
+        text = text.split(SEPARATOR)
     
     revealed_text = []
     for char in text:
