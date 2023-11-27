@@ -62,11 +62,12 @@ def main() -> None:
     time_taken = round(end - start, 2)
     print(f"Found all values in {time_taken}s")
 
+    print("Encrypting file...")
     public = PublicKey(e, N)
     public.encrypt_file("macbeth.txt", "encrypted.txt")
 
-    private = PrivateKey(d, N)
-    private.decrypt_file("encrypted.txt", "decrypted.txt")
-
-
+    # print("Decrypting file...")
+    # private = PrivateKey(d, N)
+    # private.decrypt_file("encrypted.txt", "decrypted.txt")
+    
 main()
